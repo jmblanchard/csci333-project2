@@ -102,6 +102,21 @@ template <typename T>
 void STwoDArray<T>::remove(int r, int c) {
     assert(r >= 0 && r < getNumRows());
     assert(c >= 0 && c < getNumCols());
+
+    Node<T> *curr_row_ele = rows_[r];
+    Node<T> *curr_col_ele = cols_[c];
+    Node<T> *prev_row_ele = 0;
+    Node<T> *prev_col_ele = 0;
+
+    // find the node in rows_ and do the relink
+    if (rows_[r]->getCol() == c) {
+        rows_[r] = rows_[r]->getNextRow();
+    } else {
+    }
+    
+    // find the node in cols_ and do the relink
+
+    // delete both nodes
 }
 
 template <typename T>
