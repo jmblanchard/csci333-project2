@@ -21,10 +21,10 @@ ATwoDArray<T>::ATwoDArray(int r, int c, T def) {
 template <typename T>
 ATwoDArray<T>::~ATwoDArray() {
     for (int i = 0; i < getNumRows(); ++i) {
-        delete array_[i];
+        delete[] array_[i];
     }
 
-    delete array_;
+    delete[] array_;
 }
 
 template <typename T>

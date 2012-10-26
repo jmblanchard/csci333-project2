@@ -31,7 +31,7 @@ TEST(ATwoDArrayTest, Insert) {
 
     delete arr_int;
     delete arr_doub;
-    //delete arr_string;
+    delete arr_string;
 }
 
 TEST(ATwoDArrayTest, Access) {
@@ -62,7 +62,7 @@ TEST(ATwoDArrayTest, Access) {
 
     delete arr_int;
     delete arr_doub;
-    //delete arr_string;
+    delete arr_string;
 }
 
 TEST(ATwoDArrayTest, Remove) {
@@ -102,7 +102,7 @@ TEST(ATwoDArrayTest, Remove) {
 
     delete arr_int;
     delete arr_doub;
-    //delete arr_string;
+    delete arr_string;
 }
 
 TEST(ATwoDArrayTest, GetNumRows) {
@@ -116,7 +116,7 @@ TEST(ATwoDArrayTest, GetNumRows) {
 
     delete arr_int;
     delete arr_doub;
-    //delete arr_string;
+    delete arr_string;
 }
 
 TEST(ATwoDArrayTest, GetNumCols) {
@@ -130,6 +130,6 @@ TEST(ATwoDArrayTest, GetNumCols) {
 
     delete arr_int;
     delete arr_doub;
-    //delete arr_string;
+    delete arr_string;
 }
 
