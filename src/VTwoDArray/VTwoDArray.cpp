@@ -4,7 +4,7 @@
 #include <assert.h>
 
 template <typename T>
-VTwoDArray::VTwoDArray<T>(int r, int c, T def) {
+VTwoDArray<T>::VTwoDArray(int r, int c, T def) {
     default_ = def;
     num_rows_ = r;
     num_cols_ = c;
@@ -16,35 +16,35 @@ VTwoDArray::VTwoDArray<T>(int r, int c, T def) {
 }
 
 template <typename T>
-VTwoDArray::~VTwoDArray<T>() {
+VTwoDArray<T>::~VTwoDArray() {
 }
 
 template <typename T>
-void VTwoDArray::insert(int r, int c, T value) {
-    assert(r > 0 && r < getNumRows());
-    assert(c > 0 && c < getNumCols());
+void VTwoDArray<T>::insert(int r, int c, T value) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
 
     array_[r][c] = value;
 }
 
 template <typename T>
-T VTwoDArray::access(int r, int c) {
-    assert(r > 0 && r < getNumRows());
-    assert(c > 0 && c < getNumCols());
+T VTwoDArray<T>::access(int r, int c) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
 
     return array_[r][c];
 }
 
 template <typename T>
-void VTwoDArray::remove(int r, int c) {
-    assert(r > 0 && r < getNumRows());
-    assert(c > 0 && c < getNumCols());
+void VTwoDArray<T>::remove(int r, int c) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
 
     array_[r][c] = default_;
 }
 
 template <typename T>
-void VTwoDArray::print() {
+void VTwoDArray<T>::print() {
     for (int i = 0; i < getNumRows(); ++i) {
         std::cout << "[ ";
         for (int j = 0; j < getNumCols(); ++j) {
@@ -57,12 +57,12 @@ void VTwoDArray::print() {
 }
 
 template <typename T>
-int VTwoDArray::getNumRows() {
+int VTwoDArray<T>::getNumRows() {
     return num_rows_;
 }
 
 template <typename T>
-int VTwoDArray::getNumCols() {
+int VTwoDArray<T>::getNumCols() {
     return num_cols_; 
 }
 

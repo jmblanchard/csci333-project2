@@ -19,9 +19,9 @@ class VTwoDArray {
     int getNumCols();
 
   private:
-    int default_;
+    T default_;
     int num_rows_, num_cols_;
-    std::vector<std::vector<T>> array_;
+    std::vector<std::vector<T> > array_;
 };
 
 #endif
