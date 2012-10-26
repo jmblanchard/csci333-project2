@@ -38,8 +38,12 @@ void STwoDArray<T>::insert(int r, int c, T value) {
     // first lets insert into row element
     if (curr_row_ele == 0) {
         rows_[r] = n;
-    } else if (curr_row_ele->getCol() > c) {
-        n->setNextRow(curr_row_ele);
+    } else if (curr_row_ele->getCol() >= c) {
+        if (curr_row_ele->getCol() > c) {
+            n->setNextRow(curr_row_ele);
+        } else {
+            n->setNextRow(curr_row_ele->getNextRow());
+        }
         rows_[r] = n;
     } else {
         while (curr_row_ele != 0 && curr_row_ele->getCol() < c
@@ -49,14 +53,22 @@ void STwoDArray<T>::insert(int r, int c, T value) {
         }
 
         n->setNextRow(curr_row_ele->getNextRow());
-        curr_row_ele->setNextRow(n);
+        if (curr_row_ele->getCol() > c) {
+            curr_row_ele->setNextRow(n);
+        } else {
+            curr_row_ele = n;
+        }
     }
 
     // next insert into col element
     if (curr_col_ele == 0) {
         cols_[c] = n;
-    } else if (curr_col_ele->getRow() > r) {
-        n->setNextCol(curr_col_ele);
+    } else if (curr_col_ele->getRow() >= r) {
+        if (curr_col_ele->getRow() > r) {
+            n->setNextCol(curr_col_ele);
+        } else {
+            n->setNextCol(curr_col_ele->getNextCol());
+        }
         cols_[c] = n;
     } else{
         while (curr_col_ele != 0 && curr_col_ele->getRow() < r
@@ -66,7 +78,11 @@ void STwoDArray<T>::insert(int r, int c, T value) {
         }
 
         n->setNextCol(curr_col_ele->getNextCol());
-        curr_col_ele->setNextCol(n);
+        if (curr_col_ele->getRow() > r) {
+            curr_col_ele->setNextCol(n);
+        } else {
+            curr_col_ele = n;
+        }
     }
 }
 
