@@ -103,20 +103,45 @@ void STwoDArray<T>::remove(int r, int c) {
     assert(r >= 0 && r < getNumRows());
     assert(c >= 0 && c < getNumCols());
 
+    bool found = false;
+
     Node<T> *curr_row_ele = rows_[r];
     Node<T> *curr_col_ele = cols_[c];
     Node<T> *prev_row_ele = 0;
     Node<T> *prev_col_ele = 0;
 
     // find the node in rows_ and do the relink
-    if (rows_[r]->getCol() == c) {
+    if (rows_[r] != 0 && rows_[r]->getCol() == c) {
         rows_[r] = rows_[r]->getNextRow();
+        found = true;
     } else {
+        while (curr_row_ele != 0 && curr_row_ele->getCol() != c) {
+            prev_row_ele = curr_row_ele;
+            curr_row_ele = curr_row_ele->getNextRow();
+        }
+        if (curr_row_ele != 0 && curr_row_ele->getCol() == c) {
+            prev_row_ele->setNextRow(curr_row_ele->getNextRow());
+            found = true;
+        }
     }
     
     // find the node in cols_ and do the relink
+    if (cols_[c] != 0 && cols_[c]->getRow() == r) {
+        cols_[c] = cols_[c]->getNextCol();
+    } else {
+        while (curr_col_ele != 0 && curr_col_ele->getRow() != r) {
+            prev_col_ele = curr_col_ele;
+            curr_col_ele = curr_col_ele->getNextCol();
+        }
+        if (curr_col_ele != 0 && curr_col_ele->getRow() == r) {
+            prev_col_ele->setNextCol(curr_col_ele->getNextCol());
+        }
+    }
 
     // delete both nodes
+    if (found) {
+        delete curr_row_ele;
+    }
 }
 
 template <typename T>
