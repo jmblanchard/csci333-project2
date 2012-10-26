@@ -91,11 +91,10 @@ T STwoDArray<T>::access(int r, int c) {
     // determine which node is correct and return
     if (curr_row_ele != 0 && curr_row_ele->getCol() == c) {
         return curr_row_ele->getValue();
-    } else {
+    } else if (curr_col_ele != 0 && curr_col_ele->getRow() == r) {
         return curr_col_ele->getValue();
     }
 
-    // should never get here but lets be safe I guess
     return default_;
 }
 
@@ -107,6 +106,15 @@ void STwoDArray<T>::remove(int r, int c) {
 
 template <typename T>
 void STwoDArray<T>::print() {
+    for (int i = 0; i < getNumRows(); ++i) {
+        std::cout << "[ ";
+        for (int j = 0; j < getNumCols(); ++j) {
+            std::cout << access(i,j);
+            if (j != getNumCols()-1)
+                std::cout << ", ";
+        }
+        std::cout << " ]\n";
+    }
 }
 
 template <typename T>
