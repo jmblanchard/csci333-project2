@@ -1,6 +1,7 @@
 #include "ATwoDArray.h"
 #include <iostream>
 #include <string>
+#include <assert.h>
 
 template <typename T>
 ATwoDArray<T>::ATwoDArray(int r, int c, T def) {
@@ -29,16 +30,25 @@ ATwoDArray<T>::~ATwoDArray() {
 
 template <typename T>
 void ATwoDArray<T>::insert(int r, int c, T value) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
+
     array_[r][c] = value;
 }
 
 template <typename T>
 T ATwoDArray<T>::access(int r, int c) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
+
     return array_[r][c];
 }
 
 template <typename T>
 void ATwoDArray<T>::remove(int r, int c) {
+    assert(r >= 0 && r < getNumRows());
+    assert(c >= 0 && c < getNumCols());
+
     array_[r][c] = default_;
 }
 
@@ -51,7 +61,7 @@ void ATwoDArray<T>::print() {
             if (j != getNumCols()-1)
                 std::cout << ", ";
         }
-        std::cout << "]\n";
+        std::cout << " ]\n";
     }
 }
 
